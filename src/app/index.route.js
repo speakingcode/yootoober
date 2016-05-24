@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('youtuber')
+    .module('yootoober')
     .config(routerConfig);
 
   /** @ngInject */

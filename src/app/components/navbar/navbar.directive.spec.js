@@ -11,7 +11,7 @@
     var vm,
         el;
 
-    beforeEach(module('youtuber'));
+    beforeEach(module('yootoober'));
     beforeEach(inject(function($compile, $rootScope) {
       // spyOn(_$window_, 'moment').and.callThrough();
       // $window = _$window_;

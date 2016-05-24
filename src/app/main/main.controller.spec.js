@@ -4,7 +4,7 @@
   describe('controllers', function(){
     var vm;
 
-    beforeEach(module('youtuber'));
+    beforeEach(module('yootoober'));
     beforeEach(inject(function(_$controller_) {
 
       vm = _$controller_('MainController');

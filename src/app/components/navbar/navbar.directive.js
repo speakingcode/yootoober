@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('youtuber')
+    .module('yootoober')
     .directive('navbar', navbar);
 
   /** @ngInject */

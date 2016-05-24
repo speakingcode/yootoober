@@ -2,5 +2,5 @@
   'use strict';
 
   angular
-    .module('youtuber');
+    .module('yootoober');
 })();
