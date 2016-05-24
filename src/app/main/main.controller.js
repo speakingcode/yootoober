@@ -6,7 +6,11 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController() {
+  function MainController(LoginService) {
     var vm = this;
+
+    vm.login = function() {
+      LoginService.login();
+    };
   }
 })();

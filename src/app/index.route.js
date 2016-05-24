@@ -13,6 +13,12 @@
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main'
+      })
+      .state('auth', {
+        url: '/auth?access_token',
+        controller: function($stateParams) {
+          console.log(location.hash.substring(1));
+        }
       });
 
     $urlRouterProvider.otherwise('/');
