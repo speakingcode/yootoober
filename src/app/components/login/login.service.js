@@ -12,14 +12,11 @@
         scope         = encodeURIComponent("https://www.googleapis.com/auth/youtube"),
         redirectUri   = "http://localhost:3000/auth", //window.location,
         responseType  = "token",
-        url           = "https://accounts.google.com/o/oauth2/auth?client_id=" +
-                        clientId +
-                        "&redirect_uri=" +
-                        encodeURIComponent(redirectUri) + 
-                        "&scope=" +
-                        scope +
-                        "&response_type=" +
-                        responseType;
+        url           = "https://accounts.google.com/o/oauth2/auth?" + 
+                        "client_id="      + clientId +
+                        "&redirect_uri="  + encodeURIComponent(redirectUri) + 
+                        "&scope="         + scope +
+                        "&response_type=" + responseType;
 
     this.login = function() {
       window.location.replace(url);
@@ -30,9 +27,6 @@
         return _accessToken;
 
       _accessToken = accessToken;
-
-      $http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=madmax&access_token="+_accessToken)
-        .success(function(response) { console.log(response);});
     };
 
     this.isLoggedIn = function() {
