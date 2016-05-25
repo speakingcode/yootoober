@@ -12,5 +12,9 @@
     mainCtrl.login = function() {
       LoginService.login();
     };
+
+    mainCtrl.isLoggedIn = function() {
+      return LoginService.isLoggedIn();
+    };
   }
 })();

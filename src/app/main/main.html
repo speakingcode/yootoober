@@ -10,7 +10,7 @@
       search, watch, and 'favorite' youtube vids
     </p>
     <p>
-    <button ng-click="main.login()">login</button>
+    <button ng-if="!main.isLoggedIn()" ng-click="main.login()">login</button>
     </p>
   </div>
 </div>
