@@ -17,6 +17,8 @@
       .state('auth', {
         url: '/auth?access_token',
         controller: function($state, $location, LoginService) {
+          //google returns "<redirecturl>#access_token=XXXX&...."
+          //we need to strip the value out of the full hash string
           var accessToken = $location.hash().split("access_token=")[1].split("&")[0];
           LoginService.accessToken(accessToken);
           $state.go('home');

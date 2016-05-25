@@ -13,15 +13,19 @@
       scope: {
       },
       controller: NavbarController,
-      controllerAs: 'vm',
+      controllerAs: 'navCtrl',
       bindToController: true
     };
 
     return directive;
 
     /** @ngInject */
-    function NavbarController() {
-      var vm = this;
+    function NavbarController(LoginService) {
+      var navCtrl = this;
+      
+      navCtrl.isLoggedIn = function() {
+        return LoginService.isLoggedIn();
+      };
 
     }
   }

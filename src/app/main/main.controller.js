@@ -7,9 +7,9 @@
 
   /** @ngInject */
   function MainController(LoginService) {
-    var vm = this;
+    var mainCtrl = this;
 
-    vm.login = function() {
+    mainCtrl.login = function() {
       LoginService.login();
     };
   }

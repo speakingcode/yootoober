@@ -35,5 +35,9 @@
         .success(function(response) { console.log(response);});
     };
 
+    this.isLoggedIn = function() {
+      return !!_accessToken;
+    };
+
   }
 })();
