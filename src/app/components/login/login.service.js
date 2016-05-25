@@ -6,8 +6,9 @@
     .service('LoginService', LoginService);
 
   /** @ngInject */
-  function LoginService() {
-    var clientId      = "329328501290-l20p5arvgfeq02ado3b4n9bo9kso0lph.apps.googleusercontent.com",
+  function LoginService($http) {
+    var _accessToken,
+        clientId      = "329328501290-l20p5arvgfeq02ado3b4n9bo9kso0lph.apps.googleusercontent.com",
         scope         = encodeURIComponent("https://www.googleapis.com/auth/youtube"),
         redirectUri   = "http://localhost:3000/auth", //window.location,
         responseType  = "token",
@@ -23,5 +24,16 @@
     this.login = function() {
       window.location.replace(url);
     };
+
+    this.accessToken = function(accessToken) {
+      if (arguments.length === 0)
+        return _accessToken;
+
+      _accessToken = accessToken;
+
+      $http.get("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=madmax&access_token="+_accessToken)
+        .success(function(response) { console.log(response);});
+    };
+
   }
 })();

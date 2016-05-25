@@ -16,8 +16,10 @@
       })
       .state('auth', {
         url: '/auth?access_token',
-        controller: function($stateParams) {
-          console.log(location.hash.substring(1));
+        controller: function($state, $location, LoginService) {
+          var accessToken = $location.hash().split("access_token=")[1].split("&")[0];
+          LoginService.accessToken(accessToken);
+          $state.go('home');
         }
       });
 
