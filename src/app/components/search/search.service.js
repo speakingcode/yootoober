@@ -15,7 +15,9 @@
         "&q="             + query +
         "&access_token="  + LoginService.accessToken()
       )
-      .success(function(response) { console.log(response);});
+      .success(function(response) {
+        _videos = response;
+        console.log(response);});
     };
 
     this.videos = function(videos) {

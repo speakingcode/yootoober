@@ -14,8 +14,20 @@
         controller: 'MainController',
         controllerAs: 'main'
       })
+      .state('search', {
+        url: '/search',
+        templateUrl: 'app/search/search.html',
+        controller: 'SearchController',
+        controllerAs: 'searchCtrl'
+      })
+      .state('videos', {
+        url: '/videos/:videoQuery',
+        controller: 'VideosController',
+        controllerAs: 'videoCtrl'
+
+      })
       .state('auth', {
-        url: '/auth?access_token',
+        url: '/auth',
         controller: function($state, $location, LoginService) {
           //google returns "<redirecturl>#access_token=XXXX&...."
           //we need to strip the value out of the full hash string
