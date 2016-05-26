@@ -18,7 +18,6 @@
       )
       .success(function(response) {
         that.videos(response.items);
-        console.log(response);});
     };
 
     this.videos = function(videos) {

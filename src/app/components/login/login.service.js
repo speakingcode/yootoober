@@ -6,7 +6,7 @@
     .service('LoginService', LoginService);
 
   /** @ngInject */
-  function LoginService($http) {
+  function LoginService($window) {
     var _accessToken,
         clientId      = "329328501290-l20p5arvgfeq02ado3b4n9bo9kso0lph.apps.googleusercontent.com",
         scope         = encodeURIComponent("https://www.googleapis.com/auth/youtube"),
@@ -19,7 +19,7 @@
                         "&response_type=" + responseType;
 
     this.login = function() {
-      window.location.replace(url);
+      $window.location.replace(url);
     };
 
     this.accessToken = function(accessToken) {
