@@ -12,6 +12,14 @@
     <p>
       <input ng-model="searchCtrl.query" />
     </p>
-    {{searchCtrl.videos}}
+    <table>
+      <thead>
+        <td>Name</td>
+        <td>Description</td>
+      </thead>
+      <tr ng-repeat="video in searchCtrl.videos">
+        <td>{{video.snippet.title}}</td>
+        <td>{{video.snippet.description}}</td>
+      </tr>
   </div>
 </div>
