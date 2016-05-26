@@ -21,7 +21,7 @@
         controllerAs: 'searchCtrl'
       })
       .state('videos', {
-        url: '/videos/:videoQuery',
+        url: '/videos/:videoQuery/:videoId',
         controller: 'VideosController',
         controllerAs: 'videoCtrl'
 

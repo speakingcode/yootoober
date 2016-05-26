@@ -12,6 +12,7 @@
     this.search = function(query) {
       var that = this;
 
+      //ignore empty and already retrieved queries
       if (!query)
         return;
       
