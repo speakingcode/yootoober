@@ -10,13 +10,14 @@
     var _videos = [];
 
     this.search = function(query) {
+      var that = this;
       $http.get(
         "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video" +
         "&q="             + query +
         "&access_token="  + LoginService.accessToken()
       )
       .success(function(response) {
-        _videos = response;
+        that.videos(response.items);
         console.log(response);});
     };
 
