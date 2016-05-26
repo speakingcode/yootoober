@@ -7,17 +7,24 @@
 
   /** @ngInject */
   function SearchService($http, LoginService) {
-    var _videos = [];
+    var _videos = {};
 
     this.search = function(query) {
       var that = this;
+
+      if (!query)
+        return;
+      
+      if (that.videos()[query])
+        return;
+
       $http.get(
         "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video" +
         "&q="             + query +
         "&access_token="  + LoginService.accessToken()
       )
       .success(function(response) {
-        that.videos(response.items);
+        that.videos()[query] = response.items;
       });
     };
 

@@ -17,7 +17,7 @@
         <td>Name</td>
         <td>Description</td>
       </thead>
-      <tr ng-repeat="video in searchCtrl.videos">
+      <tr ng-repeat="video in searchCtrl.videos[searchCtrl.query]">
         <td>{{video.snippet.title}}</td>
         <td>{{video.snippet.description}}</td>
       </tr>
