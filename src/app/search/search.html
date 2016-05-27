@@ -18,7 +18,7 @@
         <td>Description</td>
       </thead>
       <tr
-        ng-repeat="video in searchCtrl.videos[searchCtrl.query]"
+        ng-repeat="video in searchCtrl.videos"
         ui-sref="videos({videoQuery: searchCtrl.query, videoId: video.id.videoId})">
         <td>{{video.snippet.title}}</td>
         <td>{{video.snippet.description}}</td>

@@ -6,34 +6,30 @@
     .service('SearchService', SearchService);
 
   /** @ngInject */
-  function SearchService($http, LoginService) {
-    var _videos = {};
+  function SearchService($http, $q, LoginService) {
+    var _searches = {};
 
     this.search = function(query) {
-      var that = this;
 
-      //ignore empty and already retrieved queries
-      if (!query)
-        return;
-      
-      if (that.videos()[query])
-        return;
+      if (!query) {
+        return $q.when([]);
+      }
 
-      $http.get(
+      if (_searches[query]) {
+        return $q.when(_searches[query]);
+      }
+
+      return $http.get(
         "https://www.googleapis.com/youtube/v3/search?part=snippet&type=video" +
         "&q="             + query +
         "&access_token="  + LoginService.accessToken()
       )
-      .success(function(response) {
-        that.videos()[query] = response.items;
+      .then(function(response) {
+        console.log(response);
+        _searches[query] = response.data.items;
+        console.log(_searches);
+        return _searches[query];
       });
-    };
-
-    this.videos = function(videos) {
-      if(arguments.length === 0)
-        return _videos;
-
-      _videos = videos;
     };
   }
 })();
