@@ -9,8 +9,13 @@
   function VideoController($scope, $stateParams, VideoService, SearchService) {
     var videoCtrl = this;
 
-    videoCtrl.query = "";
-    videoCtrl.videos = VideoService.videos();
+    videoCtrl.query   = $stateParams.searchQuery;
+    videoCtrl.videoId = $stateParams.videoId;
+
+    VideoService.video(videoCtrl.videoId)
+    .then(function(video) {
+      document.getElementById('playa').innerHTML = video.player.embedHtml;
+    });
 
     $scope.$watch(
       function() {
@@ -18,13 +23,6 @@
       },
       function(newQuery) {
         VideoService.video(newQuery);
-      }
-    );
-
-    $scope.$watch(
-      function(){ return VideoService.videos(); },
-      function(newValue) {
-        videoCtrl.videos = newValue;
       }
     );
   }

@@ -6,31 +6,25 @@
     .service('VideoService', VideoService);
 
   /** @ngInject */
-  function VideoService($http, LoginService) {
+  function VideoService($http, $q, LoginService) {
     var _videos = {};
 
-    this.fetch = function(videoId) {
-      var that = this;
-
-      //ignore empty and already retrieved queries
+    this.video = function(videoId) {
       if (!videoId)
-        return;
-      
-      if (that.videos()[videoId])
-        return;
+        return $q.when([]);
 
-      $http.get(
+      if (_videos[videoId])
+        return $q.when(_videos[videoId]);
+
+      return $http.get(
         "https://www.googleapis.com/youtube/v3/videos?part=snippet,player" + 
         "&id="            + videoId +
         "&access_token="  + LoginService.accessToken()
       )
-      .success(function(response) {
-        _videos[videoId] = response.items;
+      .then(function(response) {
+        _videos[videoId] = response.data.items[0];
+        return _videos[videoId];
       });
-    };
-
-    this.video = function(videoId) {
-      return _videos[videoId];
     };
   }
 })();

@@ -25,18 +25,5 @@
     };
 
     searchCtrl.search();
-    //$scope.$watch(
-    //  function() {
-    //    return searchCtrl.query;
-    //  },
-    //  function(newQuery) {
-    //    SearchService.search(newQuery)
-    //      .then(function(videos) {
-    //        console.log('then!');
-    //        console.log(videos);
-    //        searchCtrl.videos = videos;
-    //      });
-    //  }
-    //);
   }
 })();

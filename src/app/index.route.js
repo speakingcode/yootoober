@@ -21,8 +21,9 @@
         controllerAs: 'searchCtrl',
         reloadOnSearch: false
       })
-      .state('videos', {
+      .state('video', {
         url: '/videos/:videoId?searchQuery',
+        templateUrl: 'app/video/video.html',
         controller: 'VideoController',
         controllerAs: 'videoCtrl'
 

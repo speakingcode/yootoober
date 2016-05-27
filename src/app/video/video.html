@@ -9,19 +9,6 @@
     <p class="lead">
       type a query to search for a vidya
     </p>
-    <p>
-      <input ng-model="searchCtrl.query" />
-    </p>
-    <table>
-      <thead>
-        <td>Name</td>
-        <td>Description</td>
-      </thead>
-      <tr
-        ng-repeat="video in searchCtrl.videos[searchCtrl.query]"
-        ui-sref="videos({videoQuery: searchCtrl.query, videoId: video.id.videoId})">
-        <td>{{video.snippet.title}}</td>
-        <td>{{video.snippet.description}}</td>
-      </tr>
+    <div id="playa"></div>
   </div>
 </div>

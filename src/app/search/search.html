@@ -19,7 +19,7 @@
       </thead>
       <tr
         ng-repeat="video in searchCtrl.videos"
-        ui-sref="videos({videoQuery: searchCtrl.query, videoId: video.id.videoId})">
+        ui-sref="video({videoQuery: searchCtrl.query, videoId: video.id.videoId})">
         <td>{{video.snippet.title}}</td>
         <td>{{video.snippet.description}}</td>
       </tr>
