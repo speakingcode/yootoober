@@ -5,10 +5,12 @@
   </div>
 
   <div>
-    <h1>search</h1>
-    <p class="lead">
-      type a query to search for a vidya
-    </p>
-    <div id="playa"></div>
+    <h1>{{videoCtrl.video.snippet.title}}</h1>
+    <div class="col-md-8" id="playa"></div>
+    <div class="col-md-4">
+      <p>
+        {{videoCtrl.video.snippet.description}}      
+      </p>
+    </div>
   </div>
 </div>

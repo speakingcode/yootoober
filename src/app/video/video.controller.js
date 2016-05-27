@@ -14,6 +14,7 @@
 
     VideoService.video(videoCtrl.videoId)
     .then(function(video) {
+      videoCtrl.video = video;
       document.getElementById('playa').innerHTML = video.player.embedHtml;
     });
 
