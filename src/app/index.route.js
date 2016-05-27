@@ -15,10 +15,11 @@
         controllerAs: 'main'
       })
       .state('search', {
-        url: '/search',
+        url: '/search/:searchQuery',
         templateUrl: 'app/search/search.html',
         controller: 'SearchController',
-        controllerAs: 'searchCtrl'
+        controllerAs: 'searchCtrl',
+        reloadOnSearch: false
       })
       .state('videos', {
         url: '/videos/:videoId?searchQuery',

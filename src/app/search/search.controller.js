@@ -6,33 +6,37 @@
     .controller('SearchController', SearchController);
 
   /** @ngInject */
-  function SearchController($scope, SearchService) {
+  function SearchController($scope, $state, $stateParams, SearchService) {
     var searchCtrl = this;
 
-    searchCtrl.query  = "";
-    //searchCtrl.videos = SearchService.search(searchCtrl.query);
+    searchCtrl.query  = $stateParams.searchQuery || "";
 
-    $scope.$watch(
-      function() {
-        return searchCtrl.query;
-      },
-      function(newQuery) {
-        SearchService.search(newQuery)
-          .then(function(videos) {
-            console.log('then!');
-            console.log(videos);
-            searchCtrl.videos = videos;
-          });
-      }
-    );
+    searchCtrl.search = function() {
+      SearchService.search(searchCtrl.query)
+      .then(function(videos) {
+        console.log('then!');
+        console.log(videos);
+        searchCtrl.videos = videos;
+      });
+    };
 
+    searchCtrl.doSearch = function() {
+      $state.go('search', {searchQuery: searchCtrl.query});
+    };
+
+    searchCtrl.search();
     //$scope.$watch(
-    //  function(){ return SearchService.videos(); },
-    //  function(newValue) {
-    //    searchCtrl.videos = newValue;
+    //  function() {
+    //    return searchCtrl.query;
+    //  },
+    //  function(newQuery) {
+    //    SearchService.search(newQuery)
+    //      .then(function(videos) {
+    //        console.log('then!');
+    //        console.log(videos);
+    //        searchCtrl.videos = videos;
+    //      });
     //  }
     //);
-    
-
   }
 })();
