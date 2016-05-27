@@ -6,8 +6,8 @@
     .service('LoginService', LoginService);
 
   /** @ngInject */
-  function LoginService($window) {
-    var _accessToken,
+  function LoginService($cookies, $window) {
+    var _accessToken  = $cookies.get('google-access-token') || "",
         clientId      = "329328501290-l20p5arvgfeq02ado3b4n9bo9kso0lph.apps.googleusercontent.com",
         scope         = encodeURIComponent("https://www.googleapis.com/auth/youtube"),
         redirectUri   = "http://localhost:3000/auth", //window.location,
@@ -26,6 +26,7 @@
       if (arguments.length === 0)
         return _accessToken;
 
+      $cookies.put('google-access-token', accessToken);
       _accessToken = accessToken;
     };
 
