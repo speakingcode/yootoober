@@ -8,6 +8,10 @@
     <h1>{{videoCtrl.video.snippet.title}}</h1>
     <div class="col-md-8">
       <div ng-bind-html="videoCtrl.player"></div>
+      <div ng-repeat="comment in videoCtrl.video.comments">
+        {{comment.snippet.topLevelComment.snippet.authorDisplayName}} -
+        {{comment.snippet.topLevelComment.snippet.textDisplay}}
+      </div>
     </div>
     <div class="col-md-4">
       <p>

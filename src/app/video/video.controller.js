@@ -23,7 +23,6 @@
     .then(function(video) {
       videoCtrl.video   = video;
       videoCtrl.player  = $sce.trustAsHtml(video.player.embedHtml);
-      //  document.getElementById('playa').innerHTML = video.player.embedHtml;
     });
 
     $scope.$watch(
