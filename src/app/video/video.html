@@ -6,6 +6,7 @@
 
   <div>
     <h1>{{videoCtrl.video.snippet.title}}</h1>
+    <h4>From channel: {{videoCtrl.video.snippet.channelTitle}}</h4>
     <div class="col-md-8">
       <div ng-bind-html="videoCtrl.player"></div>
       <div ng-repeat="comment in videoCtrl.video.comments">
