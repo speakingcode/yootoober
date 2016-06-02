@@ -10,7 +10,7 @@
       type a query to search for a vidya
     </p>
     <p>
-    <input ng-model="searchCtrl.query" /><button class="btn" ng-click="searchCtrl.doSearch()">Search</button>
+    <input ng-model="searchCtrl.query" on-enter="searchCtrl.doSearch()" /><button class="btn" ng-click="searchCtrl.doSearch()">Search</button>
     </p>
     <table>
       <thead>
