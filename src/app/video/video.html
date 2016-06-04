@@ -9,6 +9,18 @@
     <h4>From channel: {{videoCtrl.video.snippet.channelTitle}}</h4>
     <div class="col-md-8">
       <div ng-bind-html="videoCtrl.player"></div>
+      <div>
+
+        <button type="button" class="btn btn-primary">
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+        </button>
+
+        <button type="button" class="btn btn-primary">
+          <span class="glyphicon glyphicon-thumbs-downr"></span>
+        </button>
+
+        {{videoCtrl.video.rating}}
+      </div>
       <div ng-repeat="comment in videoCtrl.video.comments">
         {{comment.snippet.topLevelComment.snippet.authorDisplayName}} -
         {{comment.snippet.topLevelComment.snippet.textDisplay}}
@@ -16,7 +28,7 @@
     </div>
     <div class="col-md-4">
       <p>
-        {{videoCtrl.video.snippet.description}}      
+        {{videoCtrl.video.snippet.description}} 
       </p>
     </div>
   </div>
