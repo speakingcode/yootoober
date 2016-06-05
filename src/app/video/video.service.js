@@ -15,20 +15,11 @@
 
     this.video = function(videoId) {
       var video;
-
+      
       if (!videoId)
         return $q.when([]);
 
-      if ($localStorage.videos[videoId])
-        return $q.when($localStorage.videos[videoId]);
-
-      //get video
-      return $http.get(
-        "https://www.googleapis.com/youtube/v3/videos?part=snippet,player" + 
-        "&id="            + videoId +
-        //"&access_token="  + LoginService.accessToken()
-        "&key="           + GOOGLE_API_KEY
-      )
+      return that.getVideo(videoId)
         //save video, get comments
       .then(function(response) {
         video = response.data.items[0];
@@ -44,6 +35,20 @@
         $localStorage.videos[videoId].rating = response.data.items[0].rating;
         return $localStorage.videos[videoId];
       });
+    };
+
+    this.getVideo = function(videoId) { 
+
+      if ($localStorage.videos[videoId])
+        return $q.when({data: { items: [$localStorage.videos[videoId]]}});
+
+      //get video
+      return $http.get(
+        "https://www.googleapis.com/youtube/v3/videos?part=snippet,player" + 
+        "&id="            + videoId +
+        //"&access_token="  + LoginService.accessToken()
+        "&key="           + GOOGLE_API_KEY
+      );
     };
 
     this.commentThread = function(videoId) {
@@ -87,7 +92,7 @@
           "https://www.googleapis.com/youtube/v3/videos/rate" +
           "?id=" + videoId +
           "&rating=" + rating +
-          "&access_token=" + LoginService.acessToken()
+          "&access_token=" + LoginService.accessToken()
       )
       .then(function() {
         $localStorage.videos[videoId].rating = rating;
@@ -98,7 +103,7 @@
       return $http.get(
         "https://www.googleapis.com/youtube/v3/videos/getRating" +
         "?id="            + videoId +
-        "&access_token="  +LoginService.accessToken()
+        "&access_token="  + LoginService.accessToken()
       );
         
     };

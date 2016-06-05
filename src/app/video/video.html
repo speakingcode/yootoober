@@ -11,12 +11,24 @@
       <div ng-bind-html="videoCtrl.player"></div>
       <div>
 
-        <button type="button" class="btn btn-primary">
+        <button
+          type="button"
+          class="btn"
+          ng-class=
+            "videoCtrl.video.rating === 'like' ? 'btn-warning' : 'btn-primary'"
+          ng-click="videoCtrl.toggleLike()"
+        >
           <span class="glyphicon glyphicon-thumbs-up"></span>
         </button>
 
-        <button type="button" class="btn btn-primary">
-          <span class="glyphicon glyphicon-thumbs-downr"></span>
+        <button
+          type="button"
+          class="btn btn-primary"
+          ng-class=
+            "videoCtrl.video.rating === 'dislike' ? 'btn-warning' : 'btn-primary'"
+          ng-click="videoCtrl.toggleDislike()"
+        >
+          <span class="glyphicon glyphicon-thumbs-down"></span>
         </button>
 
         {{videoCtrl.video.rating}}
