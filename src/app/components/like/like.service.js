@@ -16,8 +16,9 @@
         return $q.when(likes);
 
       return $http.get(
-        "https://www.googleapis.com/youtube/v3/videos?part=snippet,player" + 
+        "https://www.googleapis.com/youtube/v3/videos?part=snippet,id" + 
         "&myRating="      + "like" +
+        "&maxResults="    + "50" + 
         "&access_token="  + LoginService.accessToken()
       )
       .then(function(response) {
@@ -26,6 +27,10 @@
         });
         return likes;
       });
+    };
+
+    this.likeCount = function() {
+      return likes.length;
     };
 
     this.like = function(videoId) {
