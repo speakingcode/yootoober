@@ -6,9 +6,16 @@
     .service('VideoService', VideoService);
 
   /** @ngInject */
-  function VideoService($http, $localStorage, $q, LoginService, GOOGLE_API_KEY) {
-    var favorites = [],
-        that = this;
+  function VideoService(
+      $http,
+      $localStorage,
+      $q,
+      LoginService,
+      LikeService,
+      GOOGLE_API_KEY
+  ) {
+    var likes = [],
+        that  = this;
 
     if (!$localStorage.videos)
       $localStorage.videos = {};
@@ -29,7 +36,7 @@
         //save comments, get rating
       .then(function(response) {
         $localStorage.videos[videoId].comments = response.data.items;
-        return that.rating(videoId);
+        return LikeService.rating(videoId);
       })
       .then(function(response) {
         $localStorage.videos[videoId].rating = response.data.items[0].rating;
@@ -63,49 +70,5 @@
       );
     };
 
-    this.likes = function() {
-      return $http.get(
-        "https://www.googleapis.com/youtube/v3/videos?part=snippet,player" + 
-        "&myRating="      + "like" +
-        "&access_token="  + LoginService.accessToken()
-      )
-      .then(function(response) {
-        likes = response.data.items;
-        return likes;
-      });
-    };
-
-    this.like = function(videoId) {
-      this.rate(videoId, "like");
-    };
-
-    this.dislike = function(videoId) {
-      this.rate(videoId, "dislike");
-    };
-
-    this.unrate = function(videoId) {
-      this.rate(videoId, "none");
-    };
-
-    this.rate = function(videoId, rating) {
-      $http.post(
-          "https://www.googleapis.com/youtube/v3/videos/rate" +
-          "?id=" + videoId +
-          "&rating=" + rating +
-          "&access_token=" + LoginService.accessToken()
-      )
-      .then(function() {
-        $localStorage.videos[videoId].rating = rating;
-      });
-    };
-
-    this.rating = function(videoId) {
-      return $http.get(
-        "https://www.googleapis.com/youtube/v3/videos/getRating" +
-        "?id="            + videoId +
-        "&access_token="  + LoginService.accessToken()
-      );
-        
-    };
   }
 })();

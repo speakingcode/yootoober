@@ -15,7 +15,7 @@
           type="button"
           class="btn"
           ng-class=
-            "videoCtrl.video.rating === 'like' ? 'btn-warning' : 'btn-primary'"
+            "videoCtrl.video.rating === 'like' ? 'btn-warning' : ''"
           ng-click="videoCtrl.toggleLike()"
         >
           <span class="glyphicon glyphicon-thumbs-up"></span>
@@ -23,9 +23,9 @@
 
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn" 
           ng-class=
-            "videoCtrl.video.rating === 'dislike' ? 'btn-warning' : 'btn-primary'"
+            "videoCtrl.video.rating === 'dislike' ? 'btn-danger' : ''"
           ng-click="videoCtrl.toggleDislike()"
         >
           <span class="glyphicon glyphicon-thumbs-down"></span>

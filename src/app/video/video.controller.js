@@ -11,6 +11,7 @@
       $stateParams,
       VideoService, 
       SearchService,
+      LikeService,
       $sce
   ){
     var videoCtrl = this;
@@ -28,30 +29,20 @@
 
     videoCtrl.toggleLike = function() {
       if (videoCtrl.video.rating === 'like') {
-        VideoService.unrate(videoCtrl.videoId);
+        LikeService.unrate(videoCtrl.videoId);
       }
       else {
-        VideoService.like(videoCtrl.videoId);
+        LikeService.like(videoCtrl.videoId);
       }
     };
 
     videoCtrl.toggleDislike = function() {
       if (videoCtrl.video.rating === 'dislike') {
-        VideoService.unrate(videoCtrl.videoId);
+        LikeService.unrate(videoCtrl.videoId);
       }
       else {
-        VideoService.dislike(videoCtrl.videoId);
+        LikeService.dislike(videoCtrl.videoId);
       }
     };
-
-
-    $scope.$watch(
-      function() {
-        return videoCtrl.query;
-      },
-      function(newQuery) {
-        VideoService.video(newQuery);
-      }
-    );
   }
 })();
