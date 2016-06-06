@@ -20,13 +20,16 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(LoginService) {
+    function NavbarController(LoginService, LikeService) {
       var navCtrl = this;
       
       navCtrl.isLoggedIn = function() {
         return LoginService.isLoggedIn();
       };
 
+      LikeService.likes().then(function(response) {
+        navCtrl.likeCount = response.length;
+      });
     }
   }
 

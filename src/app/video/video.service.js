@@ -14,8 +14,7 @@
       LikeService,
       GOOGLE_API_KEY
   ) {
-    var likes = [],
-        that  = this;
+    var that  = this;
 
     if (!$localStorage.videos)
       $localStorage.videos = {};
