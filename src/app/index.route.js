@@ -27,6 +27,12 @@
         controllerAs: 'videoCtrl'
 
       })
+      .state('favorites', {
+        url: '/favorites',
+        templateUrl: 'app/favorites/favorites.html',
+        controller: 'favoritesController',
+        controllerAs: 'favoritesCtrl'
+      })
       .state('auth', {
         url: '/auth',
         controller: function($state, $location, LoginService) {

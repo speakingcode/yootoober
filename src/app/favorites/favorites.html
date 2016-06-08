@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div>
+    <navbar></navbar>
+  </div>
+
+  <div>
+    <h1>{{videoCtrl.video.snippet.title}}</h1>
+    <h4>From channel: {{videoCtrl.video.snippet.channelTitle}}</h4>
+    <div class="col-md-8">
+      <div ng-bind-html="videoCtrl.player"></div>
+      <div>
+
+        <button
+          type="button"
+          class="btn"
+          ng-class=
+            "videoCtrl.video.rating === 'like' ? 'btn-warning' : ''"
+          ng-click="videoCtrl.toggleLike()"
+        >
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+        </button>
+
+        <button
+          type="button"
+          class="btn" 
+          ng-class=
+            "videoCtrl.video.rating === 'dislike' ? 'btn-danger' : ''"
+          ng-click="videoCtrl.toggleDislike()"
+        >
+          <span class="glyphicon glyphicon-thumbs-down"></span>
+        </button>
+
+        {{videoCtrl.video.rating}}
+      </div>
+      <div ng-repeat="comment in videoCtrl.video.comments">
+        {{comment.snippet.topLevelComment.snippet.authorDisplayName}} -
+        {{comment.snippet.topLevelComment.snippet.textDisplay}}
+      </div>
+    </div>
+    <div class="col-md-4">
+      <p>
+        {{videoCtrl.video.snippet.description}} 
+      </p>
+    </div>
+  </div>
+</div>
