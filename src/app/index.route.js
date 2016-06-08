@@ -15,7 +15,7 @@
         controllerAs: 'main'
       })
       .state('search', {
-        url: '/search/:searchQuery',
+        url: '/search/:searchQuery?locationFilter&sortOption',
         templateUrl: 'app/search/search.html',
         controller: 'SearchController',
         controllerAs: 'searchCtrl'
