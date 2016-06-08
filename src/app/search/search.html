@@ -6,21 +6,45 @@
 
   <div>
     <h1>search</h1>
-    <p class="lead">
-      type a query to search for a vidya
-    </p>
-    <p>
-    <input ng-model="searchCtrl.query" on-enter="searchCtrl.doSearch()" /><button class="btn" ng-click="searchCtrl.doSearch()">Search</button>
-    </p>
-    <table>
+    <div>
+      <form>
+        <div class="form-group">
+          <input
+            ng-model="searchCtrl.query"
+            on-enter="searchCtrl.doSearch()"
+            placeholder="keyword"/>
+        </div>
+        <div class="form-group">
+          <input
+             ng-model="searchCtrl.locationFilter"
+             placeholder="location (lat,long)"/>
+        </div>
+        <div class=form-group">
+          <select
+             name="sort"
+             id="sortSelect"
+             ng-model="searchCtrl.sortOption"
+             ng-options="option for option in searchCtrl.sortOptions">
+          </select>
+        <button
+          class="btn"
+          ng-click="searchCtrl.doSearch()">
+          Search
+        </button>
+      </form>
+    </div>
+    <table class="table table-condensed table-hover">
       <thead>
-        <td>Name</td>
-        <td>Description</td>
+        <th>Name</th>
+        <th>Description</th>
       </thead>
-      <tr
-        ng-repeat="video in searchCtrl.videos"
-        ui-sref="video({videoQuery: searchCtrl.query, videoId: video.id.videoId})">
-        <td>{{video.snippet.title}}</td>
+      <tr ng-repeat="video in searchCtrl.videos">
+        <td>
+          <a
+            ui-sref="video({videoQuery: searchCtrl.query, videoId: video.id.videoId})">
+              {{video.snippet.title}}
+          </a>
+        </td>
         <td>{{video.snippet.description}}</td>
       </tr>
   </div>
