@@ -18,7 +18,7 @@
         url: '/search/:searchQuery',
         templateUrl: 'app/search/search.html',
         controller: 'SearchController',
-        controllerAs: 'searchCtrl',
+        controllerAs: 'searchCtrl'
       })
       .state('video', {
         url: '/videos/:videoId?searchQuery',
