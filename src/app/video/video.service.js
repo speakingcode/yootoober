@@ -36,6 +36,8 @@
       .then(function(response) {
         $localStorage.videos[videoId].comments = response.data.items;
         return LikeService.rating(videoId);
+      }, function(response) {
+        return LikeService.rating(videoId);
       })
       .then(function(response) {
         $localStorage.videos[videoId].rating = response.data.items[0].rating;
