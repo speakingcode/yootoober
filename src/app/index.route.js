@@ -30,7 +30,7 @@
       .state('favorites', {
         url: '/favorites',
         templateUrl: 'app/favorites/favorites.html',
-        controller: 'favoritesController',
+        controller: 'FavoritesController',
         controllerAs: 'favoritesCtrl'
       })
       .state('auth', {
