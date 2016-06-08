@@ -23,7 +23,7 @@
       )
       .then(function(response) {
         likes = response.data.items.map(function(video) {
-          return video.id.videoId;
+          return video.id;
         });
         return likes;
       });
@@ -39,12 +39,12 @@
     };
 
     this.dislike = function(videoId) {
-      likes.splice(likes.indexOf(videoId), 1);
+      likes = likes.filter(function(video) { return video !== videoId; });
       that.rate(videoId, "dislike");
     };
 
     this.unrate = function(videoId) {
-      likes.splice(likes.indexOf(videoId), 1);
+      likes = likes.filter(function(video) { return video !== videoId; });
       that.rate(videoId, "none");
     };
 
