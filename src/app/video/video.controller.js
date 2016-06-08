@@ -29,19 +29,21 @@
 
     videoCtrl.toggleLike = function() {
       if (videoCtrl.video.rating === 'like') {
-        LikeService.unrate(videoCtrl.videoId);
+        LikeService.unrate(videoCtrl.video);
       }
       else {
-        LikeService.like(videoCtrl.videoId);
+        console.log("doodoo");
+        console.log(videoCtrl.video);
+        LikeService.like(videoCtrl.video);
       }
     };
 
     videoCtrl.toggleDislike = function() {
       if (videoCtrl.video.rating === 'dislike') {
-        LikeService.unrate(videoCtrl.videoId);
+        LikeService.unrate(videoCtrl.video);
       }
       else {
-        LikeService.dislike(videoCtrl.videoId);
+        LikeService.dislike(videoCtrl.video);
       }
     };
   }

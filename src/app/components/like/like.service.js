@@ -8,11 +8,11 @@
   /** @ngInject */
   function LikeService($http, $localStorage, $q, LoginService) {
 
-    var likes = [],
+    var likes = {},
         that  = this;
     
     this.likes = function() {
-      if (likes.length !== 0)
+      if (that.likeCount() !== 0)
         return $q.when(likes);
 
       return $http.get(
@@ -22,30 +22,30 @@
         "&access_token="  + LoginService.accessToken()
       )
       .then(function(response) {
-        likes = response.data.items.map(function(video) {
-          return video.id;
+        response.data.items.forEach(function(video) {
+          likes[video.id] = video;
         });
         return likes;
       });
     };
 
     this.likeCount = function() {
-      return likes.length;
+      return Object.keys(likes).length;
     };
 
-    this.like = function(videoId) {
-      likes.push(videoId);
-      that.rate(videoId, "like");
+    this.like = function(video) {
+      likes[video.id] = video;
+      that.rate(video.id, "like");
     };
 
-    this.dislike = function(videoId) {
-      likes = likes.filter(function(video) { return video !== videoId; });
-      that.rate(videoId, "dislike");
+    this.dislike = function(video) {
+      delete likes[video.id];
+      that.rate(video.id, "dislike");
     };
 
-    this.unrate = function(videoId) {
-      likes = likes.filter(function(video) { return video !== videoId; });
-      that.rate(videoId, "none");
+    this.unrate = function(video) {
+      delete likes[video.id];
+      that.rate(video.id, "none");
     };
 
     this.rate = function(videoId, rating) {
