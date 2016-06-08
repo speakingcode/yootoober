@@ -19,7 +19,6 @@
         templateUrl: 'app/search/search.html',
         controller: 'SearchController',
         controllerAs: 'searchCtrl',
-        reloadOnSearch: false
       })
       .state('video', {
         url: '/videos/:videoId?searchQuery',
