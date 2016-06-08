@@ -32,8 +32,6 @@
         LikeService.unrate(videoCtrl.video);
       }
       else {
-        console.log("doodoo");
-        console.log(videoCtrl.video);
         LikeService.like(videoCtrl.video);
       }
     };
