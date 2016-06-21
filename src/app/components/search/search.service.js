@@ -9,7 +9,9 @@
   function SearchService($http, $q, LoginService) {
     var _searches = {};
 
-    this.search = function(query, locationFilter = "", sortOption = "relevance") {
+    this.search = function(query, locationFilter, sortOption) {
+      locationFilter = locationFilter || "";
+      sortOption = sortOption || "relevance"
       if (!query) {
         return $q.when([]);
       }
