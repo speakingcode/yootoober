@@ -19,7 +19,9 @@
 
     beforeEach(inject(function(_$controller_, _LoginService_) {
       mockLoginService = _LoginService_;
-      mainCtrl = _$controller_('MainController');
+      mainCtrl = _$controller_('MainController', {
+        LoginService: mockLoginService
+      });
     }));
   
     it('should be able to initiate login', function() {
