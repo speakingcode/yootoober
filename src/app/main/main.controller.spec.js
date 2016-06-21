@@ -2,8 +2,9 @@
   'use strict';
 
   describe('MainController', function(){
-    var mainCtrl;
-    var mockLoginService;
+    var mainCtrl,
+        mockLoginService;
+
     beforeEach(function() {
       module('yootoober', function($provide) {
         $provide.service('LoginService', function() {
