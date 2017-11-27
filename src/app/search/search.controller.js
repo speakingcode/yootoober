@@ -13,7 +13,8 @@
 
     searchCtrl.sortOptions    = ["relevance", "date", "rating"];
     searchCtrl.sortOption     = $stateParams.sortOption || "relevance";
-    searchCtrl.locationFilter  = decodeURIComponent($stateParams.locationFilter) || "";
+    searchCtrl.locationFilter = $stateParams.locationFilter ?
+      decodeURIComponent($stateParams.locationFilter) : "";
 
     searchCtrl.search = function() {
       SearchService.search(

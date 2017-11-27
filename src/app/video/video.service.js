@@ -10,7 +10,6 @@
       $http,
       $localStorage,
       $q,
-      LoginService,
       LikeService,
       GOOGLE_API_KEY
   ) {
